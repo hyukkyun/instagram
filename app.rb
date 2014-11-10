@@ -1,6 +1,5 @@
 require "sinatra"
 require "instagram"
-require 'sinatra/reloader' if development?
 require "uri"
 
 
