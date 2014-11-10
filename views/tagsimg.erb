@@ -1,0 +1,7 @@
+  <% @page.each do |media_item| %>
+    <img src="<%= media_item.images.thumbnail.url %>">
+  <% end %>
+
+  <script type="text/javascript">
+    $('input').val("<%=@next_page_id%>");
+  </script>

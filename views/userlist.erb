@@ -1,0 +1,12 @@
+<html>
+<head>
+</head>
+<body>
+<ul>
+<% @user.each do |x| %>
+  <li><img src='<%= x.profile_picture %>'> <%= x.username %> <%= x.full_name %> <%= x.bio %> </li>
+<% end %>
+</ul>
+</body>
+
+</html>

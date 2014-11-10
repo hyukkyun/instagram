@@ -1,0 +1,64 @@
+<html>
+<head>
+</head>
+<body>
+<h1>sSearch for tags, get tag info and get media by tag</h1>
+<h2>Tag Name = <%= @tags[0].name%>. Media Count =  <%= @tags[0].media_count%>. </h2><br/><br/>
+  <div class="moreimage">
+  <p>page1 <%=@page_2_max_id%></p>
+  <% @page.each do |media_item| %>
+    <img src="<%= media_item.images.thumbnail.url %>">
+  <% end %>
+  </div>
+  <!--
+  <form action="/tags" method="GET">
+  <input type="hidden" name="next_page_id"  id="more" value="<%=@page.pagination.next_max_id%>">
+  <button type="submit">go</button>
+  </form>
+
+  -->
+
+
+  <form action="/tag_process" method="POST">
+  <input type="hidden" name="next_page_id"  id="more" value="<%=@page.pagination.next_max_id%>">
+  <button type="submit">go</button>
+  </form>
+
+
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script type="text/javascript">
+    $(function (){
+        $('button').click(function(ev){
+          
+          ev.preventDefault();
+ 
+          $.ajax({
+            url: "/tag_process",
+            type: "POST",
+            dataType: "html",
+            data: $('form').serialize(),
+            success: function(data) {
+              
+          $('.moreimage').append(data);
+          
+          
+          
+            },
+            beforeSend:function(){
+            },
+            complete:function(){
+            },
+            error : function(xhr, status, error) {
+
+            }
+
+          });
+
+        });
+      });
+
+  </script>
+
+</body>
+
+</html>
